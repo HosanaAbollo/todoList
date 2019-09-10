@@ -38,6 +38,11 @@
                 <li class="list-group-item">
                     {{ $todo->nom}}
 
+                    <!-- Création d'un lien dynamique-->
+                    <a href="/todos/{{ $todo->id }}" class="button btn-primary btn-sm float-right">
+                        Voir
+                    </a>
+
                 </li>
 
             @endforeach
