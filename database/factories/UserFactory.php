@@ -16,6 +16,11 @@ use Faker\Generator as Faker;
 |
 */
 
+
+/*
+Permet de generer du faut contenu pour la BDD
+*/
+
 $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
