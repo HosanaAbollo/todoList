@@ -26,3 +26,7 @@ Route::get('/new-todos', 'TodosController@create');
 
 // Envoyer de données au serveur et enregistrement en base de données
 Route::post('/enregistrer-tache', 'TodosController@store');
+
+// Modifier et  Mettre à jour les données en base de données
+Route::get('/todos/{todo}/edit', 'TodosController@edit');
+Route::post('/todos/{todo}/mise-a-jour-tache', 'TodosController@update');

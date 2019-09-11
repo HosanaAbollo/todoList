@@ -71,4 +71,37 @@ class TodosController extends Controller
         // redirection l'user  à la page des tâches 
         return redirect('/todos');
     }
+
+    public function edit($todoId)
+    {   
+        //Retrouver la tâche spécifique selectionnnée par l'utilisateur
+        $todo = Todo::find($todoId);
+        return view('todos.edit')->with('todo',$todo);
+    }
+
+    // Mise à jour d'un todo en BDD par l'id dynamique récupéré via l'URL 
+    public function update($todoId)
+    {
+        // Validation des champs obligatoire
+        $this->validate(request(), 
+        [
+            'nom' => 'required|min:6',
+            'description' => 'required'
+        ]);
+        
+        // Récupérer les données du formulaire
+        $data = request()->all();
+
+        $todo = Todo::find($todoId);
+
+        // Assignement des valeurs
+
+        $todo->nom = $data['nom'];
+
+        $todo->description =$data['description'];
+
+        $todo->save();
+
+        return redirect('/todos');
+    }
 }

@@ -7,7 +7,7 @@
 
 @section('content')
 
-        <h1 class="text-center my-5">Page des Todos</h1>
+        <h1 class="text-center my-5">Page principale des tâches</h1>
 
         <div class="row justify-content-center">
 
