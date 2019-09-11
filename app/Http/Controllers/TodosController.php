@@ -43,9 +43,13 @@ class TodosController extends Controller
     }
 
     public function store()
-    {
-        // Dump l'objet requete envoyée
-        //dd(request()->all());
+    {   
+        // Cette méthode recupère l'instance de la requete qu'on valide et un tableau de regle de validation
+        $this->validate(request(), 
+        [
+            'nom' => 'required|min:6',
+            'description' => 'required'
+        ]);
 
         // Créer une nouvelle instance de notre modèle
         $todo = new Todo();
@@ -53,13 +57,15 @@ class TodosController extends Controller
         // Récupération des données envoyées par l'user
         $data = request()->all();
 
+        // Affectation des données a l'instance de la classe 
+
         $todo->nom =  $data['nom'];
 
         $todo->description = $data['description'];
         
         $todo->complet = false;
 
-        // Enregistrer en base de données
+        // Enregistrer la nouvelle tâche en base de données
         $todo->save();
 
         // redirection l'user  à la page des tâches 

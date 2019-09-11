@@ -16,6 +16,24 @@
                     Créer une nouvelle tâche
                 </div>
                 <div class="card-body">
+
+                    @if($errors->any())
+
+                        <div class="alert alter-danger">
+
+                            <ul class="list-group">
+
+                                @foreach($errors->all() as $error)
+                                    <li class="list-group_item">
+                                        {{ $error }}
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+                        
+                    @endif
+
                     <form action="/enregistrer-tache" method="POST">
 
                         <!-- Ajout de la directive csrf
