@@ -23,16 +23,20 @@ class TodosController extends Controller
     public function show($todoId)
     {
         /* Dump une variable dynamique
-
             die(var_dump($todoId));1
             dd($todoId); // kill l'application
         */
 
         // Récupération de l'id en cours
-       //   $todo = Todo::find($todoId);
+          $todo = Todo::find($todoId);
 
-        return view('todos.show')->with('todo',Todo::find($todoId));
+        // Retourne la vue show du dossier ./ressource/views/todos/
+        return view('todos.show')->with('todo',$todo);
 
+    }
 
+    public function create()
+    {
+        return view('todos.create');
     }
 }

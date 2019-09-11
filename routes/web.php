@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 Route::get('/todos', 'TodosController@index' ); 
 
-
+/* ROUTAGE DYNAMIQUE PAR TODO */
 // Cette route contient un champ dynamique {todo} 
 Route::get('/todos/{todo}', 'TodosController@show');
+
+Route::get('new-todos', 'TodosController@create');

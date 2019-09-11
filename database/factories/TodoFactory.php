@@ -2,7 +2,9 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+// On utilise le modèle pour récupérer les champs 
 use App\Model;
+
 use Faker\Generator as Faker;
 
 

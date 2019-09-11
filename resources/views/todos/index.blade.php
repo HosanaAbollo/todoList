@@ -1,63 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- Extension du layout de views/layouts/app.blade.php -->
+@extends('layouts.app')
 
-    <!-- Inclusion CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+@section('title')
+    TODO APPLICATION
+@endsection
 
+@section('content')
 
-    <title>Page des Todos</title>
-</head>
-<body>
+        <h1 class="text-center my-5">Page des Todos</h1>
 
+        <div class="row justify-content-center">
 
+            <div class="col-md-8 offset-md-2">
 
-<div class="container">
+                <div class="card card-default">
 
-    <h1 class="text-center my-5">Page des Todos</h1>
+                    <div class="card-header">
+                        TODO
+                    </div>
 
-    <div class="row justify-content-center">
+                    <ul class="list-group">
+                        <!-- Avec cette boucle foreach, on affiche dynamiquement le nom et l'id  -->
+                        @foreach($todos as $todo)
 
-        <div class="col-md-8 offset-md-2">
+                            <li class="list-group-item">
+                                {{ $todo->nom}}
 
-        <div class="card card-default">
+                                <!-- Création d'un lien dynamique selon le le todo selectionné -->
+                                <a href="/todos/{{ $todo->id }}" class="button btn-primary btn-sm float-right">
+                                    voir
+                                </a>
 
-            <div class="card-header">
+                            </li>
 
-                TODO
+                        @endforeach
+                        <!-- fin du fireach-->
+                    </ul>
 
-            </div>
-
-            <ul class="list-group">
-
-            @foreach($todos as $todo)
-
-                <li class="list-group-item">
-                    {{ $todo->nom}}
-
-                    <!-- Création d'un lien dynamique-->
-                    <a href="/todos/{{ $todo->id }}" class="button btn-primary btn-sm float-right">
-                        Voir
-                    </a>
-
-                </li>
-
-            @endforeach
-
-            </ul>
-
+                </div>
+            
             </div>
         
         </div>
-    
-    </div>
+
+@endsection
 
 
-
-</div>
-    
 </body>
 </html>
