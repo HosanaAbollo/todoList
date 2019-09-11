@@ -35,8 +35,34 @@ class TodosController extends Controller
 
     }
 
+    // Création de la vue pour la création d'un tâche
     public function create()
     {
+        //$todos = Todo::all();
         return view('todos.create');
+    }
+
+    public function store()
+    {
+        // Dump l'objet requete envoyée
+        //dd(request()->all());
+
+        // Créer une nouvelle instance de notre modèle
+        $todo = new Todo();
+
+        // Récupération des données envoyées par l'user
+        $data = request()->all();
+
+        $todo->nom =  $data['nom'];
+
+        $todo->description = $data['description'];
+        
+        $todo->complet = false;
+
+        // Enregistrer en base de données
+        $todo->save();
+
+        // redirection l'user  à la page des tâches 
+        return redirect('/todos');
     }
 }

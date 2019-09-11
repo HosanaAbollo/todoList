@@ -15,11 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+// Affichage des tâches
 Route::get('/todos', 'TodosController@index' ); 
 
-/* ROUTAGE DYNAMIQUE PAR TODO */
-// Cette route contient un champ dynamique {todo} 
+// Affichage de détail d'une tâche dynamiquement
 Route::get('/todos/{todo}', 'TodosController@show');
 
-Route::get('new-todos', 'TodosController@create');
+// Créer une nouvelle tâche
+Route::get('/new-todos', 'TodosController@create');
+
+// Envoyer de données au serveur et enregistrement en base de données
+Route::post('/enregistrer-tache', 'TodosController@store');
